@@ -41,9 +41,9 @@ flowchart TD
     P[Typhoon event Zarr exports] --> O
     Q[Landslide GeoJSON layers] --> O
     O --> R[backend/app.py - FastAPI]
-    R --> S[/api/events]
-    R --> T[/api/raster]
-    R --> U[/api/vector]
+    R --> S["/api/items"]
+    R --> T["/api/items/{id}/raster"]
+    R --> U["/api/items/{id}/vector"]
     R --> V[frontend/static/]
     V --> W[Browser map viewer - Leaflet]
     W --> X[Radar raster overlay + landslide points]
