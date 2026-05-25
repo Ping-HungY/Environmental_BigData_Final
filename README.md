@@ -9,6 +9,12 @@ This repository contains two integrated components:
    viewer for exploring typhoon radar data (Zarr rasters) and landslide
    inventory layers (GeoJSON), organised as a STAC catalog.
 
+## Final Submission Note
+
+This copy was prepared for the Environmental Big Data final project submission
+by Ping-Hung Yang. The repository keeps the upstream project history intact and
+adds this note to identify the submitted copy and its intended course context.
+
 ## Architecture
 
 ### ETL & Benchmarking
