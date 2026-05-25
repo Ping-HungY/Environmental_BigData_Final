@@ -1,11 +1,17 @@
 # QPESUMS 3D Radar Final Project
 
-This repository contains an ETL and benchmarking workflow for QPESUMS 3D radar
-data. The workflow converts HDF5 radar files to Zarr, derives radar products,
-exports typhoon-event datasets, and evaluates chunking strategies for efficient
-analysis with Dask.
+This repository contains two integrated components:
+
+1. **ETL & Benchmarking** — converts QPESUMS HDF5 radar files to Zarr, derives
+   radar products, exports typhoon-event datasets, and evaluates chunking
+   strategies for efficient analysis with Dask.
+2. **STAC-based Typhoon WebGIS** — a FastAPI backend and browser-based map
+   viewer for exploring typhoon radar data (Zarr rasters) and landslide
+   inventory layers (GeoJSON), organised as a STAC catalog.
 
 ## Architecture
+
+### ETL & Benchmarking
 
 ```mermaid
 flowchart TD
@@ -27,10 +33,45 @@ flowchart TD
     L --> M[Rainfall accumulation Zarr exports]
 ```
 
+### WebGIS Application
+
+```mermaid
+flowchart TD
+    N[STAC_catalog/] --> O[backend/stac.py]
+    P[Typhoon event Zarr exports] --> O
+    Q[Landslide GeoJSON layers] --> O
+    O --> R[backend/app.py - FastAPI]
+    R --> S[/api/events]
+    R --> T[/api/raster]
+    R --> U[/api/vector]
+    R --> V[frontend/static/]
+    V --> W[Browser map viewer - Leaflet]
+    W --> X[Radar raster overlay + landslide points]
+```
+
 ## Repository Contents
 
 ```text
-Final_final/
+.
+├── backend/                   # FastAPI server
+│   ├── app.py                 # API routes and server entry point
+│   ├── stac.py                # STAC catalog parsing and asset resolution
+│   └── render.py              # Zarr → PNG raster rendering
+├── frontend/
+│   └── static/
+│       ├── app.js             # Leaflet-based map viewer
+│       └── styles.css
+├── STAC_catalog/              # Per-typhoon STAC catalogs (Zarr + GeoJSON assets)
+│   ├── catalog.json
+│   ├── gaemi/
+│   ├── kong-rey/
+│   ├── krathon/
+│   └── usagi/
+├── Gaemi/                     # Landslide inventory layers per typhoon
+├── KONG-REY/
+├── Krathon/
+├── Usagi/
+├── main.py                    # WebGIS server launcher
 ├── h5_to_zarr_with_derived_year.py
 ├── export_event_zarrs.py
 ├── convert_qpesums_to_zarr.py
@@ -253,6 +294,46 @@ store.
 
 Core experimental notebook for comparing 5-day all-product chunking strategies
 using repeated benchmark runs and median-5 summaries.
+
+## Running The WebGIS Application
+
+The WebGIS viewer lets you browse typhoon radar products and landslide layers
+on an interactive map.
+
+### Prerequisites
+
+Install dependencies (same environment as above):
+
+```bash
+uv sync
+```
+
+### Start The Server
+
+```bash
+uv run python main.py
+```
+
+Then open `http://localhost:8000` in your browser.
+
+### What You Can Do
+
+- Select a typhoon event from the left panel (Gaemi, KONG-REY, Krathon, Usagi)
+- Choose a radar product (accumulated rainfall, MaxDBZ, VIL, echo top)
+- Step through time frames or use the playback button
+- Toggle the landslide inventory overlay on and off
+- Click a landslide point to view its attributes
+
+### STAC Catalog Structure
+
+The `STAC_catalog/` directory organises all data assets as a static STAC
+catalog. Each typhoon has its own sub-catalog with two collections:
+
+- `*-qpesums-zarr/` — radar product Zarr stores (raster assets)
+- `*-landcover/` — landslide inventory GeoJSON (vector assets)
+
+The backend reads this catalog at startup to discover available events and
+assets without any database.
 
 ## Dataset Metadata
 
