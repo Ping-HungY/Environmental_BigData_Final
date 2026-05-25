@@ -1,0 +1,148 @@
+{
+  "type": "Feature",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
+  ],
+  "id": "krathon-accum-rainfall",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          118.0,
+          20.0
+        ],
+        [
+          123.5,
+          20.0
+        ],
+        [
+          123.5,
+          27.0
+        ],
+        [
+          118.0,
+          27.0
+        ],
+        [
+          118.0,
+          20.0
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    118.0,
+    20.0,
+    123.5,
+    27.0
+  ],
+  "properties": {
+    "title": "Krathon accum_rainfall",
+    "description": "accum-rainfall raster product for Typhoon Krathon, stored as a Zarr data cube.",
+    "start_datetime": "2024-09-28T16:00:00+00:00",
+    "end_datetime": "2024-10-04T23:50:00+00:00",
+    "event:name": "Krathon",
+    "event:type": "typhoon",
+    "event:year": 2024,
+    "event:country": "Taiwan",
+    "platform": "QPESUMS",
+    "product_name": "accum-rainfall",
+    "source_filename": "accum_rainfall.zarr",
+    "zarr:chunk_shape": null,
+    "xarray:open_kwargs": {
+      "engine": "zarr",
+      "consolidated": true
+    },
+    "proj:code": "EPSG:4326",
+    "proj:bbox": [
+      118.0,
+      20.0,
+      123.5,
+      27.0
+    ],
+    "proj:shape": [
+      561,
+      441
+    ],
+    "proj:transform": [
+      0.012500000000002842,
+      0.0,
+      118.0,
+      0.0,
+      -0.01249999999999929,
+      20.0
+    ],
+    "datetime": "2024-09-28T16:00:00Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Taiwan Typhoon Events 2024 STAC Catalog"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Krathon QPESUMS Raster Cubes"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Krathon QPESUMS Raster Cubes"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "../../../../events/Krathon/QPESUMS/accum_rainfall.zarr",
+      "type": "application/vnd+zarr",
+      "title": "Krathon accum_rainfall",
+      "description": "Primary Zarr asset for accum-rainfall during Typhoon Krathon.",
+      "data_vars": [
+        "accum_rainfall"
+      ],
+      "shape": {
+        "lat": 561,
+        "lon": 441
+      },
+      "dataset_attrs": {
+        "description": "MAXDBZ subset, rain rate, and event-total accumulated rainfall during typhoon warning period.",
+        "event_id": "202418",
+        "event_name_en": "KRATHON",
+        "event_name_zh": "\u5c71\u9640\u5152",
+        "source_zarr": "G:\\EnviroBigData_Data\\maxdbz_balanced.zarr",
+        "time_step_hours": 0.16666666666666666,
+        "warning_end_local_utc8": "2024-10-04 05:30",
+        "warning_end_utc": "2024-10-03 21:30:00",
+        "warning_start_local_utc8": "2024-09-29 08:30",
+        "warning_start_utc": "2024-09-29 00:30:00",
+        "zr_relationship": "Z=32.5R^1.65",
+        "source_format": "raw zarr group + hdf5 georef",
+        "processing_note": "Converted from raw Zarr and enriched with geospatial metadata from source HDF5.",
+        "epsg": 4326,
+        "bbox": [
+          118.0,
+          20.0,
+          123.5,
+          27.0
+        ],
+        "xsize": 441,
+        "ysize": 561,
+        "xscale": 0.0125,
+        "yscale": 0.0125,
+        "Conventions": "CF-1.8 (partial)",
+        "geospatial_ready": "true",
+        "zarr_ready_for_stac": "true",
+        "asset_type": "static-raster"
+      },
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "krathon-qpesums-zarr"
+}

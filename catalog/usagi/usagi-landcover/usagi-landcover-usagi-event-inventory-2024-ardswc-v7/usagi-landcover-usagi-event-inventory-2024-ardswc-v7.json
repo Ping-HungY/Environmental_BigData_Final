@@ -1,0 +1,123 @@
+{
+  "type": "Feature",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
+  ],
+  "id": "usagi-landcover-usagi-event-inventory-2024-ardswc-v7",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          120.83266854317465,
+          22.466642894368828
+        ],
+        [
+          120.9457290167794,
+          22.466642894368828
+        ],
+        [
+          120.9457290167794,
+          22.643360610260817
+        ],
+        [
+          120.83266854317465,
+          22.643360610260817
+        ],
+        [
+          120.83266854317465,
+          22.466642894368828
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    120.83266854317465,
+    22.466642894368828,
+    120.9457290167794,
+    22.643360610260817
+  ],
+  "properties": {
+    "title": "Usagi Usagi_event_inventory_2024_ardswc_v7",
+    "description": "Landcover vector layer for Typhoon Usagi, stored as GeoJSON.",
+    "event:name": "Usagi",
+    "event:type": "typhoon",
+    "event:year": 2024,
+    "event:country": "Taiwan",
+    "inventory_type": "landcover",
+    "feature_count": 2,
+    "source_crs": "EPSG:3826",
+    "source_filename": "Usagi_event_inventory_2024_ardswc_v7.geojson",
+    "geometry_types": [
+      "MultiPolygon"
+    ],
+    "fields": [
+      "fid",
+      "BeforeDate",
+      "BeforeImag",
+      "AfterDate",
+      "AfterImage",
+      "Events",
+      "Area_ha",
+      "DataSource"
+    ],
+    "proj:code": "EPSG:4326",
+    "proj:bbox": [
+      120.83266854317465,
+      22.466642894368828,
+      120.9457290167794,
+      22.643360610260817
+    ],
+    "datetime": "2024-01-01T00:00:00Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Taiwan Typhoon Events 2024 STAC Catalog"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Usagi Landcover"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Usagi Landcover"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "../../../../events/Usagi/landside_layers/Usagi_event_inventory_2024_ardswc_v7.geojson",
+      "type": "application/geo+json",
+      "title": "Usagi Usagi_event_inventory_2024_ardswc_v7 (GeoJSON)",
+      "description": "Primary GeoJSON landcover asset for Typhoon Usagi.",
+      "feature_count": 2,
+      "source_crs": "EPSG:3826",
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "fields": [
+        "fid",
+        "BeforeDate",
+        "BeforeImag",
+        "AfterDate",
+        "AfterImage",
+        "Events",
+        "Area_ha",
+        "DataSource"
+      ],
+      "roles": [
+        "data",
+        "vector",
+        "labels"
+      ]
+    }
+  },
+  "collection": "usagi-landcover"
+}

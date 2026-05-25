@@ -61,25 +61,29 @@ flowchart TD
 │   └── static/
 │       ├── app.js             # Leaflet-based map viewer
 │       └── styles.css
-├── STAC_catalog/              # Per-typhoon STAC catalogs (Zarr + GeoJSON assets)
+├── catalog/                   # STAC catalog JSON metadata
 │   ├── catalog.json
 │   ├── gaemi/
 │   ├── kong-rey/
 │   ├── krathon/
 │   └── usagi/
-├── Gaemi/                     # Landslide inventory layers per typhoon
-├── KONG-REY/
-├── Krathon/
-├── Usagi/
-├── main.py                    # WebGIS server launcher
-├── h5_to_zarr_with_derived_year.py
-├── export_event_zarrs.py
-├── convert_qpesums_to_zarr.py
-├── task1_benchmark.py
-├── task2_benchmark.py
-├── Typhoon_2024_accu_rain.py
-├── chunk_compute_5day_all_products_custom_strategies_median5.ipynb
-├── stac_catalog.json
+├── events/                    # Typhoon event data (Zarr + GeoJSON)
+│   ├── Gaemi/
+│   │   ├── QPESUMS/           # Radar product Zarr stores
+│   │   └── landside_layers/   # Landslide GeoJSON
+│   ├── KONG-REY/
+│   ├── Krathon/
+│   └── Usagi/
+├── etl/                       # ETL scripts
+│   ├── h5_to_zarr_with_derived_year.py
+│   ├── export_event_zarrs.py
+│   ├── convert_qpesums_to_zarr.py
+│   └── Typhoon_2024_accu_rain.py
+├── benchmarks/                # Benchmark scripts and notebooks
+│   ├── task1_benchmark.py
+│   ├── task2_benchmark.py
+│   └── chunk_compute_5day_all_products_custom_strategies_median5.ipynb
+├── main.py
 ├── pyproject.toml
 ├── uv.lock
 ├── .gitignore
@@ -326,11 +330,13 @@ Then open `http://localhost:8000` in your browser.
 
 ### STAC Catalog Structure
 
-The `STAC_catalog/` directory organises all data assets as a static STAC
-catalog. Each typhoon has its own sub-catalog with two collections:
+The `catalog/` directory organises all data assets as a static STAC catalog.
+Each typhoon has its own sub-catalog with two collections:
 
-- `*-qpesums-zarr/` — radar product Zarr stores (raster assets)
-- `*-landcover/` — landslide inventory GeoJSON (vector assets)
+- `*-qpesums-zarr/` — radar product Zarr stores (raster assets), pointing to
+  files under `events/<typhoon>/QPESUMS/`
+- `*-landcover/` — landslide inventory GeoJSON (vector assets), pointing to
+  files under `events/<typhoon>/landside_layers/`
 
 The backend reads this catalog at startup to discover available events and
 assets without any database.

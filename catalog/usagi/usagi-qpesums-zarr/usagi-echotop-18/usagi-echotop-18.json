@@ -1,0 +1,173 @@
+{
+  "type": "Feature",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/datacube/v2.2.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
+  ],
+  "id": "usagi-echotop-18",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          118.0,
+          20.0
+        ],
+        [
+          123.5,
+          20.0
+        ],
+        [
+          123.5,
+          27.0
+        ],
+        [
+          118.0,
+          27.0
+        ],
+        [
+          118.0,
+          20.0
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    118.0,
+    20.0,
+    123.5,
+    27.0
+  ],
+  "properties": {
+    "title": "Usagi EchoTop_18",
+    "description": "echotop-18 raster product for Typhoon Usagi, stored as a Zarr data cube.",
+    "start_datetime": "2024-11-13T16:00:00+00:00",
+    "end_datetime": "2024-11-16T23:50:00+00:00",
+    "event:name": "Usagi",
+    "event:type": "typhoon",
+    "event:year": 2024,
+    "event:country": "Taiwan",
+    "platform": "QPESUMS",
+    "product_name": "echotop-18",
+    "source_filename": "EchoTop_18.zarr",
+    "zarr:chunk_shape": null,
+    "xarray:open_kwargs": {
+      "engine": "zarr",
+      "consolidated": true
+    },
+    "cube:dimensions": {
+      "time": {
+        "extent": [
+          "2024-11-13T16:00:00Z",
+          "2024-11-16T23:50:00Z"
+        ],
+        "step": "P0DT0H10M0S",
+        "type": "temporal"
+      },
+      "lon": {
+        "axis": "x",
+        "extent": [
+          118.0,
+          123.5
+        ],
+        "reference_system": 4326,
+        "type": "spatial"
+      },
+      "lat": {
+        "axis": "y",
+        "extent": [
+          20.0,
+          27.0
+        ],
+        "reference_system": 4326,
+        "type": "spatial"
+      }
+    },
+    "cube:variables": {
+      "TOP18": {
+        "type": "data",
+        "dimensions": [
+          "time",
+          "lat",
+          "lon"
+        ],
+        "unit": "m",
+        "attrs": {
+          "units": "m"
+        },
+        "shape": [
+          480,
+          561,
+          441
+        ],
+        "chunks": [
+          48,
+          256,
+          256
+        ]
+      }
+    },
+    "datetime": "2024-11-13T16:00:00Z",
+    "proj:code": "EPSG:4326",
+    "proj:bbox": [
+      118.0,
+      20.0,
+      123.5,
+      27.0
+    ],
+    "proj:shape": [
+      561,
+      441
+    ],
+    "proj:transform": [
+      0.012500000000002842,
+      0.0,
+      118.0,
+      0.0,
+      -0.01249999999999929,
+      20.0
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Taiwan Typhoon Events 2024 STAC Catalog"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Usagi QPESUMS Raster Cubes"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Usagi QPESUMS Raster Cubes"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "../../../../events/Usagi/QPESUMS/EchoTop_18.zarr",
+      "type": "application/vnd+zarr",
+      "title": "Usagi EchoTop_18",
+      "description": "Primary Zarr asset for echotop-18 during Typhoon Usagi.",
+      "data_vars": [
+        "TOP18"
+      ],
+      "shape": {
+        "time": 480,
+        "lat": 561,
+        "lon": 441
+      },
+      "dataset_attrs": {},
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "usagi-qpesums-zarr"
+}

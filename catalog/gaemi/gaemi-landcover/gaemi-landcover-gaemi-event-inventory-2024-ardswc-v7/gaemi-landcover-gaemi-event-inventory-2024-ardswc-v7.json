@@ -1,0 +1,123 @@
+{
+  "type": "Feature",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
+  ],
+  "id": "gaemi-landcover-gaemi-event-inventory-2024-ardswc-v7",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          120.20050452204936,
+          22.3433315337912
+        ],
+        [
+          121.85012447029797,
+          22.3433315337912
+        ],
+        [
+          121.85012447029797,
+          24.84477309744674
+        ],
+        [
+          120.20050452204936,
+          24.84477309744674
+        ],
+        [
+          120.20050452204936,
+          22.3433315337912
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    120.20050452204936,
+    22.3433315337912,
+    121.85012447029797,
+    24.84477309744674
+  ],
+  "properties": {
+    "title": "Gaemi Gaemi_event_inventory_2024_ardswc_v7",
+    "description": "Landcover vector layer for Typhoon Gaemi, stored as GeoJSON.",
+    "event:name": "Gaemi",
+    "event:type": "typhoon",
+    "event:year": 2024,
+    "event:country": "Taiwan",
+    "inventory_type": "landcover",
+    "feature_count": 2918,
+    "source_crs": "EPSG:3826",
+    "source_filename": "Gaemi_event_inventory_2024_ardswc_v7.geojson",
+    "geometry_types": [
+      "MultiPolygon"
+    ],
+    "fields": [
+      "fid",
+      "BeforeDate",
+      "BeforeImag",
+      "AfterDate",
+      "AfterImage",
+      "Events",
+      "Area_ha",
+      "DataSource"
+    ],
+    "proj:code": "EPSG:4326",
+    "proj:bbox": [
+      120.20050452204936,
+      22.3433315337912,
+      121.85012447029797,
+      24.84477309744674
+    ],
+    "datetime": "2024-01-01T00:00:00Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Taiwan Typhoon Events 2024 STAC Catalog"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Gaemi Landcover"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Gaemi Landcover"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "../../../../events/Gaemi/landside_layers/Gaemi_event_inventory_2024_ardswc_v7.geojson",
+      "type": "application/geo+json",
+      "title": "Gaemi Gaemi_event_inventory_2024_ardswc_v7 (GeoJSON)",
+      "description": "Primary GeoJSON landcover asset for Typhoon Gaemi.",
+      "feature_count": 2918,
+      "source_crs": "EPSG:3826",
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "fields": [
+        "fid",
+        "BeforeDate",
+        "BeforeImag",
+        "AfterDate",
+        "AfterImage",
+        "Events",
+        "Area_ha",
+        "DataSource"
+      ],
+      "roles": [
+        "data",
+        "vector",
+        "labels"
+      ]
+    }
+  },
+  "collection": "gaemi-landcover"
+}

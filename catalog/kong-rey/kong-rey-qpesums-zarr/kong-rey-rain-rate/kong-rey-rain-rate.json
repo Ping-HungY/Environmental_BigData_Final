@@ -1,0 +1,223 @@
+{
+  "type": "Feature",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/datacube/v2.2.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
+  ],
+  "id": "kong-rey-rain-rate",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          118.0,
+          20.0
+        ],
+        [
+          123.5,
+          20.0
+        ],
+        [
+          123.5,
+          27.0
+        ],
+        [
+          118.0,
+          27.0
+        ],
+        [
+          118.0,
+          20.0
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    118.0,
+    20.0,
+    123.5,
+    27.0
+  ],
+  "properties": {
+    "title": "KONG-REY rain_rate",
+    "description": "rain-rate raster product for Typhoon KONG-REY, stored as a Zarr data cube.",
+    "start_datetime": "2024-10-29T09:30:00+00:00",
+    "end_datetime": "2024-11-01T06:30:00+00:00",
+    "event:name": "KONG-REY",
+    "event:type": "typhoon",
+    "event:year": 2024,
+    "event:country": "Taiwan",
+    "platform": "QPESUMS",
+    "product_name": "rain-rate",
+    "source_filename": "rain_rate.zarr",
+    "zarr:chunk_shape": null,
+    "xarray:open_kwargs": {
+      "engine": "zarr",
+      "consolidated": true
+    },
+    "cube:dimensions": {
+      "time": {
+        "extent": [
+          "2024-10-29T09:30:00Z",
+          "2024-11-01T06:30:00Z"
+        ],
+        "description": "time",
+        "step": "P0DT0H10M0S",
+        "type": "temporal"
+      },
+      "lon": {
+        "axis": "x",
+        "extent": [
+          118.0,
+          123.5
+        ],
+        "description": "longitude",
+        "reference_system": 4326,
+        "type": "spatial"
+      },
+      "lat": {
+        "axis": "y",
+        "extent": [
+          20.0,
+          27.0
+        ],
+        "description": "latitude",
+        "reference_system": 4326,
+        "type": "spatial"
+      }
+    },
+    "cube:variables": {
+      "rain_rate": {
+        "type": "data",
+        "description": "Rain rate converted from MAXDBZ using Z=32.5R^1.65",
+        "dimensions": [
+          "time",
+          "lat",
+          "lon"
+        ],
+        "unit": "mm hr-1",
+        "attrs": {
+          "long_name": "Rain rate converted from MAXDBZ using Z=32.5R^1.65",
+          "units": "mm hr-1"
+        },
+        "shape": [
+          415,
+          561,
+          441
+        ],
+        "chunks": [
+          24,
+          256,
+          256
+        ]
+      },
+      "time_code": {
+        "type": "auxiliary",
+        "description": "original time code from raw zarr",
+        "dimensions": [
+          "time"
+        ],
+        "attrs": {
+          "long_name": "original time code from raw zarr"
+        },
+        "shape": [
+          415
+        ],
+        "chunks": [
+          415
+        ]
+      }
+    },
+    "datetime": "2024-10-29T09:30:00Z",
+    "proj:code": "EPSG:4326",
+    "proj:bbox": [
+      118.0,
+      20.0,
+      123.5,
+      27.0
+    ],
+    "proj:shape": [
+      561,
+      441
+    ],
+    "proj:transform": [
+      0.012500000000002842,
+      0.0,
+      118.0,
+      0.0,
+      -0.01249999999999929,
+      20.0
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../../catalog.json",
+      "type": "application/json",
+      "title": "Taiwan Typhoon Events 2024 STAC Catalog"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "KONG-REY QPESUMS Raster Cubes"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "KONG-REY QPESUMS Raster Cubes"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "../../../../events/KONG-REY/QPESUMS/rain_rate.zarr",
+      "type": "application/vnd+zarr",
+      "title": "KONG-REY rain_rate",
+      "description": "Primary Zarr asset for rain-rate during Typhoon KONG-REY.",
+      "data_vars": [
+        "rain_rate"
+      ],
+      "shape": {
+        "time": 415,
+        "lat": 561,
+        "lon": 441
+      },
+      "dataset_attrs": {
+        "description": "MAXDBZ subset, rain rate, and event-total accumulated rainfall during typhoon warning period.",
+        "event_id": "202421",
+        "event_name_en": "KONG-REY",
+        "event_name_zh": "\u5eb7\u82ae",
+        "source_zarr": "G:\\EnviroBigData_Data\\maxdbz_balanced.zarr",
+        "time_step_hours": 0.16666666666666666,
+        "warning_end_local_utc8": "2024-11-01 14:30",
+        "warning_end_utc": "2024-11-01 06:30:00",
+        "warning_start_local_utc8": "2024-10-29 17:30",
+        "warning_start_utc": "2024-10-29 09:30:00",
+        "zr_relationship": "Z=32.5R^1.65",
+        "source_format": "raw zarr group + hdf5 georef",
+        "processing_note": "Converted from raw Zarr and enriched with geospatial metadata from source HDF5.",
+        "epsg": 4326,
+        "bbox": [
+          118.0,
+          20.0,
+          123.5,
+          27.0
+        ],
+        "xsize": 441,
+        "ysize": 561,
+        "xscale": 0.0125,
+        "yscale": 0.0125,
+        "Conventions": "CF-1.8 (partial)",
+        "geospatial_ready": "true",
+        "zarr_ready_for_stac": "true",
+        "asset_type": "time-series-raster-cube"
+      },
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "kong-rey-qpesums-zarr"
+}

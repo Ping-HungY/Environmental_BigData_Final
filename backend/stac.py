@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-DEFAULT_STAC_ROOT = Path("STAC_catalog/catalog.json")
+DEFAULT_STAC_ROOT = Path("catalog/catalog.json")
 LEGACY_STAC_ROOT = Path("stac_catalog/catalog.json")
 FALLBACK_STAC_ROOT = Path("catalog.json")
 VECTOR_ASSET_NAME = "landslides"
